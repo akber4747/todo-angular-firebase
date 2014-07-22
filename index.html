@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="todo">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular-To-Do</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+<script src="main.js"></script>
+<script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="ToDoCtrl">
+	<div class="container">
+	<div class='jumbotron'>
+		<h1>What To Do Today <small>by Akber Malik</small></h1>
+	</div>
+	<div id="main">
+		<div class="items" ng-repeat="todo in todos">
+			<span class="item_no">{{$index +1}}</span>
+			<span>{{todo.name}}</span>
+			<!-- moving up and down disabled for now -->
+<!-- 			<span class='glyphicon glyphicon-arrow-down' ng-click="move($index, 'down')"> </span>
+			<span class='glyphicon glyphicon-arrow-up' href="" ng-click="move($index, 'up')"> </span> -->
+			<!-- <span class="glyphicon glyphicon-remove" ng-click="removeTodo($index)"></span> -->
+		</div>
+		<form ng-submit="addTodo()">
+			<input type="text" class="item-form" ng-model="todoName" placeholder="Add An Item to Your List">
+
+			<button class='btn-remove' type="submit" value="Add a new item"><span class="glyphicon glyphicon-plus" id="submit"></span></button>
+		</form>	
+	</div>
+
+	</div>	
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+</body>
+</html>
