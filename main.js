@@ -1,5 +1,5 @@
 var myApp = angular.module("todo", ["firebase"]);
-myApp.constant("firebase_url", "http://what-to-do.firebaseio.com");
+myApp.constant("firebase_url", "http://what-to-do.firebaseio.com/");
 
 function ToDoCtrl($scope, $firebase, firebase_url){
 	var todosRef = new Firebase(firebase_url);
@@ -9,17 +9,22 @@ function ToDoCtrl($scope, $firebase, firebase_url){
 	$scope.todos = $firebase(todosRef);
 	// function to add to the list
 	$scope.addTodo = function(){
-		var timestamp = "hi";
+		var timestamp = Date().valueOf();
 
-		var todosRef = new Firebase(firebase_url + timestamp);
+		var itemRef = new Firebase(firebase_url + timestamp);
 
-		$scope.todos.$add({
+		$firebase(itemRef).$set({
 			id: timestamp,
 			name: $scope.todoName,
 			completed: false,
 		});
 
 		$scope.todoName = "";
+	};
+	$scope.removeTodo = function(index, todo, event){
+		console.log('hi');
+		// alert(todoid);
+       $scope.todos.$remove(todo.id);
 	};
 	//function to remove from the lists
 	// $scope.removeTodo = function(start){

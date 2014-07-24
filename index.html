@@ -14,21 +14,25 @@
 <body ng-controller="ToDoCtrl">
 	<div class="container">
 	<div class='jumbotron'>
-		<h1>What To Do Today <small>by Akber Malik</small></h1>
+		<h1>What To Do Today (w/DB) <small>by Akber Malik</small></h1>
 	</div>
 	<div id="main">
 		<div class="items" ng-repeat="todo in todos">
 			<span class="item_no">{{$index +1}}</span>
-			<span>{{todo.name}}</span>
+			<input class="listed-items" type="text" ng-model="todo.name">
 			<!-- moving up and down disabled for now -->
 <!-- 			<span class='glyphicon glyphicon-arrow-down' ng-click="move($index, 'down')"> </span>
 			<span class='glyphicon glyphicon-arrow-up' href="" ng-click="move($index, 'up')"> </span> -->
-			<!-- <span class="glyphicon glyphicon-remove" ng-click="removeTodo($index)"></span> -->
+			<span>{{todo.id}}</span>
+			{{todo}}
+			<form >
+				<button class='btn-default' ng-click="removeTodo($index, todo, $event)" value="Add a new item"><span class="glyphicon glyphicon-remove" id="submit"></span></button>
+			</form>
 		</div>
 		<form ng-submit="addTodo()">
 			<input type="text" class="item-form" ng-model="todoName" placeholder="Add An Item to Your List">
 
-			<button class='btn-remove' type="submit" value="Add a new item"><span class="glyphicon glyphicon-plus" id="submit"></span></button>
+			<button class='btn-default' type="submit" value="Add a new item"><span class="glyphicon glyphicon-plus" id="submit"></span></button>
 		</form>	
 	</div>
 

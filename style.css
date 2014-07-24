@@ -21,6 +21,11 @@ html{
 	border: none;
 
 }
+.listed-items{
+	background-color: none;
+	border: none;
+
+}
 .item-form{
 	width: 600px;
 	border-radius: 5px;
